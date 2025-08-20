@@ -1,0 +1,12 @@
+autoInstallPeers: false
+
+packages:
+  - packages/*
+  - playground/*
+
+onlyBuiltDependencies:
+  - esbuild
+  - simple-git-hooks
+
+publicHoistPattern:
+  - rollup

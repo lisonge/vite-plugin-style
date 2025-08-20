@@ -1,0 +1,51 @@
+{
+  "name": "vite-plugin-style",
+  "version": "0.0.0",
+  "description": "a vite plugin for handling styles",
+  "author": "lisonge",
+  "sideEffects": false,
+  "type": "module",
+  "main": "./dist/index.mjs",
+  "types": "./dist/index.d.mts",
+  "files": [
+    "client.d.ts",
+    "dist"
+  ],
+  "scripts": {
+    "build": "unbuild",
+    "postbuild": "tsx ./scripts/postbuild.ts"
+  },
+  "license": "MIT",
+  "keywords": [
+    "vite",
+    "plugin",
+    "style",
+    "css"
+  ],
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lisonge/vite-plugin-style.git"
+  },
+  "bugs": {
+    "url": "https://github.com/lisonge/vite-plugin-style/issues"
+  },
+  "homepage": "https://github.com/lisonge/vite-plugin-style#readme",
+  "peerDependencies": {
+    "vite": "^6.0.0 || ^7.0.0"
+  },
+  "peerDependenciesMeta": {
+    "vite": {
+      "optional": true
+    }
+  },
+  "volta": {
+    "extends": "../../package.json"
+  },
+  "dependencies": {
+    "acorn-walk": "^8.3.4",
+    "magic-string": "^0.30.17"
+  }
+}
