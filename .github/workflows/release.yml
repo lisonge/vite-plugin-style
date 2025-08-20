@@ -16,7 +16,7 @@ jobs:
       - run: pnpm config set //registry.npmjs.org/:_authToken ${{ secrets.NPM_TOKEN }}
       - run: pnpm install
       - run: pnpm build
-      - run: pnpm -F vite-plugin-style publish
+      - run: pnpm -F vite-plugin-style publish --no-git-checks
 
       - uses: actions/create-release@v1
         env:
