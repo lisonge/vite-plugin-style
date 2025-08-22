@@ -1,17 +1,27 @@
 import prettier from 'prettier';
-import { styleExts } from '../src/share';
 import fs from 'node:fs/promises';
 import process from 'node:process';
 
+// https://github.com/vitejs/vite/blob/v7.1.2/packages/vite/src/node/constants.ts#L97
+const styleExts = [
+  '.css',
+  '.less',
+  '.sass',
+  '.scss',
+  '.styl',
+  '.stylus',
+  '.pcss',
+  '.postcss',
+  '.sss',
+];
+
 const template = `
-declare module '{0}' {
+declare module '*{0}?style' {
   const style: HTMLStyleElement;
   export default style;
-}
-`;
-const rawContent = styleExts
-  .map((v) => template.replace('{0}', '*' + v))
-  .join('\n');
+}`.trimStart();
+
+const rawContent = styleExts.map((v) => template.replace('{0}', v)).join('\n');
 const formattedContent = await prettier.format(rawContent, {
   parser: 'typescript',
 });
