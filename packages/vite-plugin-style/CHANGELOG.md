@@ -1,3 +1,3 @@
 # What's Changed
 
-- release first version
+- perf: change to zero dependency
