@@ -12,8 +12,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "unbuild",
-    "postbuild": "tsx ./scripts/postbuild.ts"
+    "build": "unbuild"
   },
   "license": "MIT",
   "keywords": [
