@@ -1,3 +1,3 @@
 # What's Changed
 
-- perf: client dts
+- fix: cloneNode hmr
