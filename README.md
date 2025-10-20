@@ -58,6 +58,6 @@ const container = document.body.appendChild(document.createElement("div")).attac
 container.appendChild(document.createElement("h1")).textContent = "Test Styles";
 container.append(style1);
 container.append(style2);
-const style3 = style1.cloneNode();
+const style3 = style1.cloneNode(true);
 container.append(style3);
 ```
