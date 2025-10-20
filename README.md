@@ -39,7 +39,7 @@ const container = document.body
 container.appendChild(document.createElement('h1')).textContent = 'Test Styles';
 container.append(style1); // with hmr when change style1.css
 container.append(style2);
-const style3 = style1.cloneNode(); // it will still have hmr
+const style3 = style1.cloneNode(true); // it will still have hmr
 container.append(style3);
 
 ```
