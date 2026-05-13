@@ -3,7 +3,7 @@ import type { Plugin } from 'vite';
 export default function style(): Plugin {
   let isServe: boolean;
   return {
-    name: pluginName,
+    name: 'vite-plugin-style',
     enforce: 'pre',
     config(_, env) {
       isServe = env.command === 'serve';
@@ -28,9 +28,7 @@ export default function style(): Plugin {
 }
 
 const styleQuery = '?style';
-
-const pluginName = 'vite-plugin-style';
-const cssIdSuffix = '.' + pluginName;
+const cssIdSuffix = '.style';
 
 const nameReg = /[0-9a-zA-Z_]+/g;
 const autoPre = (v: string): string => {
@@ -59,20 +57,19 @@ const getStyleModule = (cssId: string, isServe: boolean): string => {
 const toolsModId = 'virtual:style-tools';
 const resolvedToolsModId = '\0' + toolsModId;
 const toolsTemplate = `
-var a;
-export default (b) => ((a = document.createElement('style')), a.append(b), a);
+export const _style = (b, a = document.createElement('style')) => (a.append(b), a);
 `.trimStart();
 
 const styleBuildTemplate = `
 import {1} from {0};
-import d from '${toolsModId}';
-export default d({1});
+import { _style } from '${toolsModId}';
+export default _style({1});
 `.trimStart();
 
 const styleDevTemplate = `
 import css from {0};
-import createStyle from '${toolsModId}';
-const style = createStyle(css);
+import { _style } from '${toolsModId}';
+const style = _style(css);
 export default style;
 if (import.meta.hot) {
   style.setAttribute('data-vite-dev-id', {0});
