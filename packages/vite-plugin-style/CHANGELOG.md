@@ -1,3 +1,3 @@
 # What's Changed
 
-- fix: cloneNode hmr
+- feat: support vite8
